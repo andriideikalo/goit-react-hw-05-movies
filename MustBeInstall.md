@@ -40,6 +40,8 @@ $ lodash core -o ./dist/lodash.core.js       https://github.com/lodash/lodash   
 <!--npm install @streamich/react-use    https://github.com/streamich/react-use/pkgs/npm/react-use                           -->
 <!-- npm i react-router-dom             https://www.npmjs.com/package/react-router-dom                             Пакет
                                                                                                                 react-router-dom містить прив’язки для використання React Router у веб-додатках.-->
-<!-- ______________ -->
+<!-- npm i react-toastify                https://www.npmjs.com/package/react-toastify                 повіщення до  програми.-->
+<!-- npm install --save react-toastify -->
+
 <!-- ______________ -->
 <!-- ______________ -->
