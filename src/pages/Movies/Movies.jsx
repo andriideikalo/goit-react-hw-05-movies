@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import toast, { Toaster } from 'react-hot-toast';
-import { BsSearch, BsFillEmojiFrownFill } from 'react-icons/bs';
+import { BsSearch } from 'react-icons/bs';
 import { getMovieByQuery } from 'services/Api';
 import { MovieList } from 'components/MovieList';
 import Notiflix from 'notiflix';
@@ -59,14 +58,9 @@ const Movies = () => {
     const searchQuery = query.trim().toLowerCase();
 
     if (!searchQuery) {
-      toast.error('Search box cannot be empty. Please enter the word.', {
-        icon: <BsFillEmojiFrownFill size={36} fill="#ec9706" />,
-        style: {
-          borderRadius: '10px',
-          background: '#fff',
-          color: '#494545',
-        },
-      });
+      Notiflix.Notify.warning(
+        'Search box cannot be empty. Please enter the word.'
+      );
       return;
     }
     setSearchParams({ query: searchQuery });
@@ -76,7 +70,6 @@ const Movies = () => {
 
   return (
     <main>
-      <Toaster position="top-center" reverseOrder={false} />
       <styl.Section>
         <styl.Container>
           <styl.Form onSubmit={submitHandler}>
