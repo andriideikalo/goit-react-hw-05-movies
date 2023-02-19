@@ -1,64 +1,34 @@
+// приклад запиту
+// https://api.themoviedb.org/3/movie/550?api_key=e0f7258397e08a39ddd2202708092bf4
+
 const BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = 'e0f7258397e08a39ddd2202708092bf4';
 
 async function getTrending() {
-  const response = await fetch(
-    `${BASE_URL}/trending/movie/week?api_key=${API_KEY}`
-  );
-  if (response.ok) {
-    return await response.json();
-  }
-  return await Promise.reject(
-    new Error("Oops, something went wrong... We can't load trending movies :(")
-  );
+  const res = await fetch(`${BASE_URL}/trending/movie/week?api_key=${API_KEY}`);
+  return await res.json();
 }
 
 async function getMovieById(id) {
-  const response = await fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`);
-  if (response.ok) {
-    return await response.json();
-  }
-  return await Promise.reject(
-    new Error(
-      'We are sorry, but we did not find any information about movie :('
-    )
-  );
+  const res = await fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`);
+  return await res.json();
 }
 
 async function getMovieCast(id) {
-  const response = await fetch(
-    `${BASE_URL}/movie/${id}/credits?api_key=${API_KEY}`
-  );
-  if (response.ok) {
-    return await response.json();
-  }
-  return await Promise.reject(
-    new Error('We are sorry, but we did not find any information about cast :(')
-  );
+  const res = await fetch(`${BASE_URL}/movie/${id}/credits?api_key=${API_KEY}`);
+  return await res.json();
 }
 
 async function getMovieReviews(id) {
-  const response = await fetch(
-    `${BASE_URL}/movie/${id}/reviews?api_key=${API_KEY}`
-  );
-  if (response.ok) {
-    return await response.json();
-  }
-  return await Promise.reject(
-    new Error('We do not have any reviews for this movie :(')
-  );
+  const res = await fetch(`${BASE_URL}/movie/${id}/reviews?api_key=${API_KEY}`);
+  return await res.json();
 }
 
 async function getMovieByQuery(query) {
-  const response = await fetch(
+  const res = await fetch(
     `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`
   );
-  if (response.ok) {
-    return await response.json();
-  }
-  return await Promise.reject(
-    new Error(`No results containing ${query} were found.`)
-  );
+  return await res.json();
 }
 
 export {
