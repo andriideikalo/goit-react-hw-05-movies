@@ -4,6 +4,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { BsSearch, BsFillEmojiFrownFill } from 'react-icons/bs';
 import { getMovieByQuery } from 'services/Api';
 import { MovieList } from 'components/MovieList';
+import Notiflix from 'notiflix';
 
 import * as styl from './Movies.styled';
 
@@ -35,9 +36,16 @@ const Movies = () => {
         setMovies(results);
         setStatus(Status.RESOLVED);
       })
-      .catch(error => {
-        setStatus(Status.REJECTED);
-      });
+      .catch(function (error) {
+        if (error.response) {
+          Notiflix.Notify.warning(error.response.data);
+        } else if (error.request) {
+          Notiflix.Notify.warning('Request failed');
+        } else {
+          Notiflix.Notify.warning('Error', error.message);
+        }
+      })
+      .finally();
   }, [queryParam]);
 
   const handleChange = e => {

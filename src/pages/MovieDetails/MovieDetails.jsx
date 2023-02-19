@@ -3,8 +3,7 @@ import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { IoIosPeople, IoIosPaper, IoIosArrowDropleft } from 'react-icons/io';
 import { getMovieById } from 'services/Api';
 import * as styl from './MovieDetails.styled';
-// import { Notification } from 'components/Notification';
-// import { Loader } from 'components/Loader';
+import Notiflix from 'notiflix';
 
 const Status = {
   IDLE: 'idle',
@@ -16,7 +15,7 @@ const Status = {
 const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
-  // const [error, setError] = useState(null);
+
   const [status, setStatus] = useState(Status.IDLE);
   const location = useLocation();
 
@@ -25,19 +24,22 @@ const MovieDetails = () => {
     getMovieById(movieId)
       .then(movieInfo => {
         if (!Object.keys(movieInfo).length) {
-          // setError(
-          //   'We are sorry, but we did not find any information about movie :('
-          // );
           setStatus(Status.REJECTED);
           return;
         }
         setMovie(movieInfo);
         setStatus(Status.RESOLVED);
       })
-      .catch(error => {
-        // setError(error);
-        setStatus(Status.REJECTED);
-      });
+      .catch(function (error) {
+        if (error.response) {
+          Notiflix.Notify.warning(error.response.data);
+        } else if (error.request) {
+          Notiflix.Notify.warning('Request failed');
+        } else {
+          Notiflix.Notify.warning('Error', error.message);
+        }
+      })
+      .finally();
   }, [movieId]);
 
   const backLinkHref = location.state?.from ?? '/';
@@ -50,8 +52,7 @@ const MovieDetails = () => {
             <IoIosArrowDropleft size={24} />
             <span>HOME</span>
           </styl.NavItem>
-          {/* {status === Status.PENDING && <Loader />} */}
-          {/* {status === Status.REJECTED && <Notification message={error} />} */}
+
           {status === Status.RESOLVED && (
             <>
               <styl.MovieWrapper>

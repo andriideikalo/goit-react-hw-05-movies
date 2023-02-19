@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieCast } from 'services/Api';
 import * as styl from './Cast.styled';
+import Notiflix from 'notiflix';
 
 const Status = {
   IDLE: 'idle',
@@ -22,9 +23,16 @@ const Cast = () => {
         setCast(cast);
         setStatus(Status.RESOLVED);
       })
-      .catch(error => {
-        setStatus(Status.REJECTED);
-      });
+      .catch(function (error) {
+        if (error.response) {
+          Notiflix.Notify.warning(error.response.data);
+        } else if (error.request) {
+          Notiflix.Notify.warning('Request failed');
+        } else {
+          Notiflix.Notify.warning('Error', error.message);
+        }
+      })
+      .finally();
   }, [movieId]);
 
   return (

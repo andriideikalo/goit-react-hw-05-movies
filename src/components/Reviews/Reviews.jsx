@@ -31,7 +31,7 @@ const Reviews = () => {
         if (error.response) {
           Notiflix.Notify.warning(error.response.data);
         } else if (error.request) {
-          Notiflix.Notify.warning('XMLHttpRequest failed');
+          Notiflix.Notify.warning('Request failed');
         } else {
           Notiflix.Notify.warning('Error', error.message);
         }
