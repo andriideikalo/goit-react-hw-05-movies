@@ -5,15 +5,7 @@ import { BsSearch, BsFillEmojiFrownFill } from 'react-icons/bs';
 import { getMovieByQuery } from 'services/Api';
 import { MovieList } from 'components/MovieList';
 
-import {
-  Section,
-  Container,
-  Form,
-  Field,
-  Label,
-  Input,
-  Button,
-} from './Movies.styled';
+import * as styl from './Movies.styled';
 
 const Status = {
   IDLE: 'idle',
@@ -77,11 +69,11 @@ const Movies = () => {
   return (
     <main>
       <Toaster position="top-center" reverseOrder={false} />
-      <Section>
-        <Container>
-          <Form onSubmit={submitHandler}>
-            <Field>
-              <Input
+      <styl.Section>
+        <styl.Container>
+          <styl.Form onSubmit={submitHandler}>
+            <styl.Field>
+              <styl.Input
                 type="text"
                 name="query"
                 value={query}
@@ -89,15 +81,15 @@ const Movies = () => {
                 placeholder=" "
                 onChange={handleChange}
               />
-              <Label>Search movies</Label>
-            </Field>
-            <Button type="submit">
+              <styl.Label>Search movies</styl.Label>
+            </styl.Field>
+            <styl.Button type="submit">
               <BsSearch size={24} />
-            </Button>
-          </Form>
+            </styl.Button>
+          </styl.Form>
           {status === Status.RESOLVED && <MovieList items={movies} />}
-        </Container>
-      </Section>
+        </styl.Container>
+      </styl.Section>
     </main>
   );
 };

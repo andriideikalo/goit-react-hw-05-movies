@@ -85,6 +85,10 @@ const MovieDetails = () => {
                       <Genre key={name}>{name}</Genre>
                     ))}
                   </GenreWrapper>
+                  <p>
+                    <b>Budget</b>
+                  </p>
+                  <GenreWrapper>{movie.budget}</GenreWrapper>
                 </div>
               </MovieWrapper>
               <AdditionalInfo>

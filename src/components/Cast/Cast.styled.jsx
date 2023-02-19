@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const List = styled.ul`
+export const List = styled.ul`
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
@@ -23,9 +23,7 @@ const List = styled.ul`
   }
 `;
 
-const Character = styled.p`
+export const Character = styled.p`
   margin-top: 4px;
-  color: #808080;
+  color: grey;
 `;
-
-export { List, Character };
