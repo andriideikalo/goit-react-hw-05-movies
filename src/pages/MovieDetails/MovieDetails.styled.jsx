@@ -39,6 +39,11 @@ export const GenreWrapper = styled.p`
   gap: 12px;
 `;
 
+export const ManyWrapper = styled.div`
+  display: flex;
+  gap: 12px;
+`;
+
 export const Genre = styled.span`
   padding: 4px 12px;
   color: #494545;

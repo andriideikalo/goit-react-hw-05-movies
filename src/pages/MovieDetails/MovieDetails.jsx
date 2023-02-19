@@ -44,6 +44,12 @@ const MovieDetails = () => {
 
   const backLinkHref = location.state?.from ?? '/';
 
+  const Budget = () => {
+    return movie.budget.toLocaleString();
+  };
+  const Revenue = () => {
+    return movie.revenue.toLocaleString();
+  };
   return (
     <main>
       <styl.Section>
@@ -77,10 +83,17 @@ const MovieDetails = () => {
                       <styl.Genre key={name}>{name}</styl.Genre>
                     ))}
                   </styl.GenreWrapper>
-                  <p>
-                    <b>Budget</b>
-                  </p>
-                  <div>{movie.budget}</div>
+                  <styl.ManyWrapper>
+                    <p>
+                      <b>Budget</b>
+                    </p>
+                    <div>${Budget()}</div>
+                    <p>
+                      <b>Revenue</b>
+                    </p>
+                    <div>${Revenue()}</div>
+                  </styl.ManyWrapper>
+
                   <p>
                     <b>Release datet</b>
                   </p>
