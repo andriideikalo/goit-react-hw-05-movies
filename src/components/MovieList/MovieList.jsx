@@ -6,21 +6,15 @@ export const MovieList = ({ items }) => {
   const location = useLocation();
 
   return (
-    <styl.List>
-      {items.map(({ id, poster_path, title }) => (
-        <styl.ListItem key={id}>
+    <ul>
+      {items.map(({ id, title }) => (
+        <li key={id}>
           <styl.Item to={`/movies/${id}`} state={{ from: location }}>
-            <styl.Poster
-              src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-              alt={title}
-            />
-            <styl.MovieInfo>
-              <p>{title}</p>
-            </styl.MovieInfo>
+            <p>{title}</p>
           </styl.Item>
-        </styl.ListItem>
+        </li>
       ))}
-    </styl.List>
+    </ul>
   );
 };
 

@@ -1,23 +1,23 @@
 import { Outlet } from 'react-router-dom';
 import { TbHome, TbMovie } from 'react-icons/tb';
-import { Container, Navigation, NavItem } from './SharedLayout.styled';
+import * as styl from './SharedLayout.styled';
 import { Suspense } from 'react';
 
 export const SharedLayout = () => {
   return (
     <>
-      <Container>
-        <Navigation>
-          <NavItem to="/">
+      <styl.Container>
+        <styl.Navigation>
+          <styl.NavItem to="/">
             <TbHome size={24} />
             <span>Home</span>
-          </NavItem>
-          <NavItem to="movies">
+          </styl.NavItem>
+          <styl.NavItem to="movies">
             <TbMovie size={24} />
             <span>Movies</span>
-          </NavItem>
-        </Navigation>
-      </Container>
+          </styl.NavItem>
+        </styl.Navigation>
+      </styl.Container>
 
       <Suspense fallback={null}>
         <Outlet />

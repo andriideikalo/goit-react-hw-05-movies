@@ -1,10 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getTrending } from '../../services/Api';
 import { MovieList } from 'components/MovieList';
-import { Section, Container, Heading } from './Home.styled';
-// import { Notification } from 'components/Notification';
-// import { Loader } from 'components/Loader';
-
+import * as styl from './Home.styled';
 const Status = {
   PENDING: 'pending',
   REJECTED: 'rejected',
@@ -13,7 +10,6 @@ const Status = {
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
-  // const [error, setError] = useState(null);
   const [status, setStatus] = useState(Status.PENDING);
 
   useEffect(() => {
@@ -21,9 +17,6 @@ const Home = () => {
       .then(({ results }) => {
         if (!results.length) {
           setStatus(Status.REJECTED);
-          // setError(
-          //   "Oops, something went wrong... We can't load trending movies :("
-          // );
           return;
         }
         setMovies(results);
@@ -37,14 +30,12 @@ const Home = () => {
 
   return (
     <main>
-      <Section>
-        <Container>
-          <Heading>Trends of the week</Heading>
-          {/* {status === Status.PENDING && <Loader />} */}
-          {/* {status === Status.REJECTED && <Notification message={error} />} */}
+      <styl.Section>
+        <styl.Container>
+          <styl.Heading>Trends of the week</styl.Heading>
           {status === Status.RESOLVED && <MovieList items={movies} />}
-        </Container>
-      </Section>
+        </styl.Container>
+      </styl.Section>
     </main>
   );
 };

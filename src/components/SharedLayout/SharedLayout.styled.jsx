@@ -1,21 +1,21 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-const Container = styled.div`
+export const Container = styled.div`
   padding-left: 20px;
   padding-right: 20px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 1280px;
+  margin-left: 0;
+  margin-right: 0o;
+  /* width: 1280px; */
 `;
 
-const Navigation = styled.nav`
+export const Navigation = styled.nav`
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   gap: 24px;
 `;
 
-const NavItem = styled(NavLink)`
+export const NavItem = styled(NavLink)`
   display: flex;
   align-items: center;
   gap: 4px;
@@ -29,14 +29,12 @@ const NavItem = styled(NavLink)`
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &.active {
-    border-color: #ec9706;
+    border-color: orange;
     border-radius: 2px;
   }
 
   &:hover:not(.active),
   &:focus-visible:not(.active) {
-    color: #ec9706;
+    color: orange;
   }
 `;
-
-export { Container, Navigation, NavItem };

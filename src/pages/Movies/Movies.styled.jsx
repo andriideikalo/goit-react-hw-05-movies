@@ -10,8 +10,8 @@ const Section = styled.section`
 const Container = styled.div`
   padding-left: 20px;
   padding-right: 20px;
-  margin-left: auto;
-  margin-right: auto;
+  /* margin-left: auto;
+  margin-right: auto; */
   width: 1280px;
 `;
 
@@ -20,7 +20,7 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 24px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   margin-bottom: 36px;
   width: 510px;
 
