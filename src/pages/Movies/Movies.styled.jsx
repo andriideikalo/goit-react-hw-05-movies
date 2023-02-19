@@ -106,7 +106,8 @@ const Button = styled.button`
 
   &:hover,
   &:focus {
-    color: #ec9706;
+    color: red
+    text-shadow: 4px 0px 2px rgba(1,225,216,0.61)
   }
 `;
 
