@@ -45,10 +45,9 @@ export const Label = styled.label`
 
   Input:focus ~ &,
   Input:not(:placeholder-shown) ~ & {
-    transform: translateY(-34px) scale(0.8);
-
+    transform: translateY(-50px) scale(0.9);
     color: orange;
-    background-color: black;
+    background-color: white;
   }
 
   Input:not(:focus) ~ & {
@@ -97,11 +96,10 @@ export const Button = styled.button`
   border: none;
 
   cursor: pointer;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  /* transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1); */
 
   &:hover,
   &:focus {
-    color: red
-    text-shadow: 4px 0px 2px rgba(1,225,216,0.61)rgba(1,225,216,0.61)
+    color: orange;
   }
 `;

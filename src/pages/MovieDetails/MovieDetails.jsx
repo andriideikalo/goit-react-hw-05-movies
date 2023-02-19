@@ -2,16 +2,7 @@ import { Suspense, useEffect, useState } from 'react';
 import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { IoIosPeople, IoIosPaper, IoIosArrowDropleft } from 'react-icons/io';
 import { getMovieById } from 'services/Api';
-import {
-  Section,
-  Container,
-  MovieWrapper,
-  Title,
-  GenreWrapper,
-  Genre,
-  AdditionalInfo,
-  NavItem,
-} from './MovieDetails.styled';
+import * as styl from './MovieDetails.styled';
 // import { Notification } from 'components/Notification';
 // import { Loader } from 'components/Loader';
 
@@ -53,25 +44,25 @@ const MovieDetails = () => {
 
   return (
     <main>
-      <Section>
-        <Container>
-          <NavItem to={backLinkHref}>
+      <styl.Section>
+        <styl.Container>
+          <styl.NavItem to={backLinkHref}>
             <IoIosArrowDropleft size={24} />
             <span>HOME</span>
-          </NavItem>
+          </styl.NavItem>
           {/* {status === Status.PENDING && <Loader />} */}
           {/* {status === Status.REJECTED && <Notification message={error} />} */}
           {status === Status.RESOLVED && (
             <>
-              <MovieWrapper>
+              <styl.MovieWrapper>
                 <img
                   src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                   alt={movie.title}
                 />
                 <div>
-                  <Title>
+                  <styl.Title>
                     {movie.title} ({new Date(movie.release_date).getFullYear()})
-                  </Title>
+                  </styl.Title>
                   <p>User Score: {Math.round(movie.vote_average * 10)}%</p>
                   <p>
                     <b>Overview</b>
@@ -80,41 +71,45 @@ const MovieDetails = () => {
                   <p>
                     <b>Genres</b>
                   </p>
-                  <GenreWrapper>
+                  <styl.GenreWrapper>
                     {movie.genres.map(({ name }) => (
-                      <Genre key={name}>{name}</Genre>
+                      <styl.Genre key={name}>{name}</styl.Genre>
                     ))}
-                  </GenreWrapper>
+                  </styl.GenreWrapper>
                   <p>
                     <b>Budget</b>
                   </p>
-                  <GenreWrapper>{movie.budget}</GenreWrapper>
+                  <div>{movie.budget}</div>
+                  <p>
+                    <b>Release datet</b>
+                  </p>
+                  <div>{movie.release_date}</div>
                 </div>
-              </MovieWrapper>
-              <AdditionalInfo>
+              </styl.MovieWrapper>
+              <styl.AdditionalInfo>
                 <h2>Additional information</h2>
                 <ul>
                   <li>
-                    <NavItem to="cast" state={{ from: backLinkHref }}>
+                    <styl.NavItem to="cast" state={{ from: backLinkHref }}>
                       <IoIosPeople size={24} />
                       <span>Cast</span>
-                    </NavItem>
+                    </styl.NavItem>
                   </li>
                   <li>
-                    <NavItem to="reviews" state={{ from: backLinkHref }}>
+                    <styl.NavItem to="reviews" state={{ from: backLinkHref }}>
                       <IoIosPaper size={24} />
                       <span>Reviews</span>
-                    </NavItem>
+                    </styl.NavItem>
                   </li>
                 </ul>
-              </AdditionalInfo>
+              </styl.AdditionalInfo>
               <Suspense fallback={null}>
                 <Outlet />
               </Suspense>
             </>
           )}
-        </Container>
-      </Section>
+        </styl.Container>
+      </styl.Section>
     </main>
   );
 };

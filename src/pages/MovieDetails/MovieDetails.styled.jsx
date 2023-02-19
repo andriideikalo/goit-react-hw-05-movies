@@ -1,20 +1,20 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-const Section = styled.section`
+export const Section = styled.section`
   padding-top: 24px;
   padding-bottom: 24px;
 `;
 
-const Container = styled.div`
+export const Container = styled.div`
   padding-left: 20px;
   padding-right: 20px;
-  margin-left: auto;
-  margin-right: auto;
+  /* margin-left: auto;
+  margin-right: auto; */
   width: 1280px;
 `;
 
-const MovieWrapper = styled.div`
+export const MovieWrapper = styled.div`
   display: flex;
   gap: 32px;
   color: #494545;
@@ -29,24 +29,24 @@ const MovieWrapper = styled.div`
   }
 `;
 
-const Title = styled.h1`
+export const Title = styled.h1`
   margin-bottom: 36px;
 
   font-size: 42px;
 `;
-const GenreWrapper = styled.p`
+export const GenreWrapper = styled.p`
   display: flex;
   gap: 12px;
 `;
 
-const Genre = styled.span`
+export const Genre = styled.span`
   padding: 4px 12px;
   color: #494545;
   font-size: 16px;
   line-height: 1.4;
 `;
 
-const AdditionalInfo = styled.div`
+export const AdditionalInfo = styled.div`
   margin-bottom: 24px;
   h2 {
     margin-bottom: 24px;
@@ -61,7 +61,7 @@ const AdditionalInfo = styled.div`
   }
 `;
 
-const NavItem = styled(NavLink)`
+export const NavItem = styled(NavLink)`
   display: flex;
   align-items: center;
   gap: 8px;
@@ -82,14 +82,3 @@ const NavItem = styled(NavLink)`
     color: #ec9706;
   }
 `;
-
-export {
-  Section,
-  Container,
-  MovieWrapper,
-  Title,
-  GenreWrapper,
-  Genre,
-  AdditionalInfo,
-  NavItem,
-};
