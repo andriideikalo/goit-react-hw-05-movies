@@ -25,7 +25,7 @@ const Status = {
 const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
-  const [error, setError] = useState(null);
+  // const [error, setError] = useState(null);
   const [status, setStatus] = useState(Status.IDLE);
   const location = useLocation();
 
@@ -34,9 +34,9 @@ const MovieDetails = () => {
     getMovieById(movieId)
       .then(movieInfo => {
         if (!Object.keys(movieInfo).length) {
-          setError(
-            'We are sorry, but we did not find any information about movie :('
-          );
+          // setError(
+          //   'We are sorry, but we did not find any information about movie :('
+          // );
           setStatus(Status.REJECTED);
           return;
         }
@@ -44,7 +44,7 @@ const MovieDetails = () => {
         setStatus(Status.RESOLVED);
       })
       .catch(error => {
-        setError(error);
+        // setError(error);
         setStatus(Status.REJECTED);
       });
   }, [movieId]);

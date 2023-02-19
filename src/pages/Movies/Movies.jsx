@@ -26,7 +26,7 @@ const Status = {
 const Movies = () => {
   const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
-  const [error, setError] = useState(null);
+  // const [error, setError] = useState(null);
   const [status, setStatus] = useState(Status.IDLE);
   const [searchParams, setSearchParams] = useSearchParams();
   const queryParam = searchParams.get('query');
@@ -39,7 +39,7 @@ const Movies = () => {
     getMovieByQuery(queryParam)
       .then(({ results }) => {
         if (!results.length) {
-          setError(`No result containing ${queryParam} were found.`);
+          // setError(`No result containing ${queryParam} were found.`);
           setStatus(Status.REJECTED);
           return;
         }
@@ -47,7 +47,7 @@ const Movies = () => {
         setStatus(Status.RESOLVED);
       })
       .catch(error => {
-        setError(error);
+        // setError(error);
         setStatus(Status.REJECTED);
       });
   }, [queryParam]);

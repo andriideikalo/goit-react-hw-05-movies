@@ -13,7 +13,7 @@ const Status = {
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
-  const [error, setError] = useState(null);
+  // const [error, setError] = useState(null);
   const [status, setStatus] = useState(Status.PENDING);
 
   useEffect(() => {
@@ -21,16 +21,16 @@ const Home = () => {
       .then(({ results }) => {
         if (!results.length) {
           setStatus(Status.REJECTED);
-          setError(
-            "Oops, something went wrong... We can't load trending movies :("
-          );
+          // setError(
+          //   "Oops, something went wrong... We can't load trending movies :("
+          // );
           return;
         }
         setMovies(results);
         setStatus(Status.RESOLVED);
       })
       .catch(error => {
-        setError(error);
+        // setError(error);
         setStatus(Status.REJECTED);
       });
   }, []);

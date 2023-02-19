@@ -16,7 +16,7 @@ const Status = {
 const Reviews = () => {
   const { movieId } = useParams();
   const [reviews, setReviews] = useState(null);
-  const [error, setError] = useState(null);
+  // const [error, setError] = useState(null);
   const [status, setStatus] = useState(Status.IDLE);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const Reviews = () => {
     getMovieReviews(movieId)
       .then(({ results }) => {
         if (!results.length) {
-          setError('We do not have any reviews for this movie :(');
+          // setError('We do not have any reviews for this movie :(');
           setStatus(Status.REJECTED);
           return;
         }
@@ -32,7 +32,7 @@ const Reviews = () => {
         setStatus(Status.RESOLVED);
       })
       .catch(error => {
-        setError(error);
+        // setError(error);
         setStatus(Status.REJECTED);
       });
   }, [movieId]);
