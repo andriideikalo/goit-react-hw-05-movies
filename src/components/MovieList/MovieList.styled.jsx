@@ -10,3 +10,6 @@ export const Item = styled(NavLink)`
     color: orange;
   }
 `;
+export const Name = styled.p`
+  font-size: 16px;
+`;

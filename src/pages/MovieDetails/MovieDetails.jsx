@@ -1,6 +1,8 @@
 import { Suspense, useEffect, useState } from 'react';
 import { Outlet, useLocation, useParams } from 'react-router-dom';
-import { IoIosPeople, IoIosPaper, IoIosArrowDropleft } from 'react-icons/io';
+import { TiArrowBack } from 'react-icons/ti';
+import { GiNothingToSay } from 'react-icons/gi';
+import { RiTeamLine } from 'react-icons/ri';
 import { getMovieById } from 'services/Api';
 import * as styl from './MovieDetails.styled';
 import Notiflix from 'notiflix';
@@ -55,8 +57,8 @@ const MovieDetails = () => {
       <styl.Section>
         <styl.Container>
           <styl.NavItem to={backLinkHref}>
-            <IoIosArrowDropleft size={24} />
-            <span>HOME</span>
+            <TiArrowBack size={24} />
+            <span>BACK</span>
           </styl.NavItem>
 
           {status === Status.RESOLVED && (
@@ -105,13 +107,13 @@ const MovieDetails = () => {
                 <ul>
                   <li>
                     <styl.NavItem to="cast" state={{ from: backLinkHref }}>
-                      <IoIosPeople size={24} />
+                      <RiTeamLine size={24} />
                       <span>Cast</span>
                     </styl.NavItem>
                   </li>
                   <li>
                     <styl.NavItem to="reviews" state={{ from: backLinkHref }}>
-                      <IoIosPaper size={24} />
+                      <GiNothingToSay size={24} />
                       <span>Reviews</span>
                     </styl.NavItem>
                   </li>

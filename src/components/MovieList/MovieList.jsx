@@ -1,16 +1,13 @@
 import PropTypes from 'prop-types';
-import { useLocation } from 'react-router-dom';
 import * as styl from './MovieList.styled';
 
 export const MovieList = ({ items }) => {
-  const location = useLocation();
-
   return (
     <ul>
       {items.map(({ id, title }) => (
         <li key={id}>
-          <styl.Item to={`/movies/${id}`} state={{ from: location }}>
-            <p>{title}</p>
+          <styl.Item to={`/movies/${id}`}>
+            <styl.Name>{title}</styl.Name>
           </styl.Item>
         </li>
       ))}

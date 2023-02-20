@@ -26,10 +26,13 @@ const Cast = () => {
       .catch(function (error) {
         if (error.response) {
           Notiflix.Notify.warning(error.response.data);
+          // console.log(error.response.data);
         } else if (error.request) {
           Notiflix.Notify.warning('Request failed');
+          // console.log(error.request);
         } else {
           Notiflix.Notify.warning('Error', error.message);
+          // console.log(error.message);
         }
       })
       .finally();
@@ -40,14 +43,14 @@ const Cast = () => {
       {status === Status.RESOLVED && (
         <styl.List>
           {cast.map(({ id, character, name, profile_path }) => (
-            <li key={id}>
-              <img
+            <styl.Item key={id}>
+              <styl.Img
                 src={`https://image.tmdb.org/t/p/w500${profile_path}`}
                 alt={name}
               />
-              <p>{name}</p>
+              <styl.NameCast>{name}</styl.NameCast>
               <styl.Character>Character: {character}</styl.Character>
-            </li>
+            </styl.Item>
           ))}
         </styl.List>
       )}
