@@ -4,24 +4,14 @@ import { getMovieCast } from 'services/Api';
 import * as styl from './Cast.styled';
 import Notiflix from 'notiflix';
 
-const Status = {
-  IDLE: 'idle',
-  PENDING: 'pending',
-  REJECTED: 'rejected',
-  RESOLVED: 'resolved',
-};
-
 const Cast = () => {
   const { movieId } = useParams();
   const [cast, setCast] = useState(null);
-  const [status, setStatus] = useState(Status.IDLE);
 
   useEffect(() => {
-    setStatus(Status.PENDING);
     getMovieCast(movieId)
       .then(({ cast }) => {
         setCast(cast);
-        setStatus(Status.RESOLVED);
       })
       .catch(function (error) {
         if (error.response) {
@@ -40,7 +30,7 @@ const Cast = () => {
 
   return (
     <>
-      {status === Status.RESOLVED && (
+      {cast && (
         <styl.List>
           {cast.map(({ id, character, name, profile_path }) => (
             <styl.Item key={id}>
@@ -54,6 +44,10 @@ const Cast = () => {
           ))}
         </styl.List>
       )}
+      {!cast &&
+        Notiflix.Notify.warning(
+          'Sorry. There is no list of actors for this film.('
+        )}
     </>
   );
 };

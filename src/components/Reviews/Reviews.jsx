@@ -4,28 +4,17 @@ import { getMovieReviews } from 'services/Api';
 import * as styl from './ReviewsStyled';
 import Notiflix from 'notiflix';
 
-const Status = {
-  IDLE: 'idle',
-  PENDING: 'pending',
-  REJECTED: 'rejected',
-  RESOLVED: 'resolved',
-};
-
 const Reviews = () => {
   const { movieId } = useParams();
   const [reviews, setReviews] = useState(null);
-  const [status, setStatus] = useState(Status.IDLE);
 
   useEffect(() => {
-    setStatus(Status.PENDING);
     getMovieReviews(movieId)
       .then(({ results }) => {
         if (!results.length) {
-          setStatus(Status.REJECTED);
           return;
         }
         setReviews(results);
-        setStatus(Status.RESOLVED);
       })
       .catch(function (error) {
         if (error.response) {
@@ -41,7 +30,7 @@ const Reviews = () => {
 
   return (
     <>
-      {status === Status.RESOLVED && (
+      {reviews && (
         <ul>
           {reviews.map(({ id, author, content, url }) => (
             <div key={id}>
@@ -53,6 +42,8 @@ const Reviews = () => {
           ))}
         </ul>
       )}
+      {reviews !== setReviews &&
+        Notiflix.Notify.warning('Sorry. There are no reviews for this movie.(')}
     </>
   );
 };

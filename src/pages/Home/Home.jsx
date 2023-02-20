@@ -4,25 +4,16 @@ import { MovieList } from 'components/MovieList';
 import * as styl from './Home.styled';
 import Notiflix from 'notiflix';
 
-const Status = {
-  PENDING: 'pending',
-  REJECTED: 'rejected',
-  RESOLVED: 'resolved',
-};
-
 const Home = () => {
   const [movies, setMovies] = useState([]);
-  const [status, setStatus] = useState(Status.PENDING);
 
   useEffect(() => {
     getTrending()
       .then(({ results }) => {
         if (!results.length) {
-          setStatus(Status.REJECTED);
           return;
         }
         setMovies(results);
-        setStatus(Status.RESOLVED);
       })
       .catch(function (error) {
         if (error.response) {
@@ -41,7 +32,7 @@ const Home = () => {
       <styl.Section>
         <styl.Container>
           <styl.Heading>Trends of the week</styl.Heading>
-          {status === Status.RESOLVED && <MovieList items={movies} />}
+          {movies && <MovieList items={movies} />}
         </styl.Container>
       </styl.Section>
     </main>

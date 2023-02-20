@@ -7,30 +7,19 @@ import { getMovieById } from 'services/Api';
 import * as styl from './MovieDetails.styled';
 import Notiflix from 'notiflix';
 
-const Status = {
-  IDLE: 'idle',
-  PENDING: 'pending',
-  REJECTED: 'rejected',
-  RESOLVED: 'resolved',
-};
-
 const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
 
-  const [status, setStatus] = useState(Status.IDLE);
   const location = useLocation();
 
   useEffect(() => {
-    setStatus(Status.PENDING);
     getMovieById(movieId)
       .then(movieInfo => {
         if (!Object.keys(movieInfo).length) {
-          setStatus(Status.REJECTED);
           return;
         }
         setMovie(movieInfo);
-        setStatus(Status.RESOLVED);
       })
       .catch(function (error) {
         if (error.response) {
@@ -61,7 +50,7 @@ const MovieDetails = () => {
             <span>BACK</span>
           </styl.NavItem>
 
-          {status === Status.RESOLVED && (
+          {movie && (
             <>
               <styl.MovieWrapper>
                 <img
