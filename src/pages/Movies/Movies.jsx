@@ -7,17 +7,10 @@ import Notiflix from 'notiflix';
 
 import * as styl from './Movies.styled';
 
-const Status = {
-  IDLE: 'idle',
-  PENDING: 'pending',
-  REJECTED: 'rejected',
-  RESOLVED: 'resolved',
-};
-
 const Movies = () => {
   const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
-  const [status, setStatus] = useState(Status.IDLE);
+
   const [searchParams, setSearchParams] = useSearchParams();
   const queryParam = searchParams.get('query');
 
@@ -25,25 +18,12 @@ const Movies = () => {
     if (!queryParam) {
       return;
     }
-    setStatus(Status.PENDING);
+
     getMovieByQuery(queryParam)
       .then(({ results }) => {
-        if (!results.length) {
-          setStatus(Status.REJECTED);
-          return;
-        }
         setMovies(results);
-        setStatus(Status.RESOLVED);
       })
-      .catch(function (error) {
-        if (error.response) {
-          Notiflix.Notify.warning(error.response.data);
-        } else if (error.request) {
-          Notiflix.Notify.warning('Request failed');
-        } else {
-          Notiflix.Notify.warning('Error', error.message);
-        }
-      })
+      .catch(error => console.log(error))
       .finally();
   }, [queryParam]);
 
@@ -88,7 +68,7 @@ const Movies = () => {
               <BsSearch size={24} />
             </styl.Button>
           </styl.Form>
-          {status === Status.RESOLVED && <MovieList items={movies} />}
+          {movies && <MovieList items={movies} />}
         </styl.Container>
       </styl.Section>
     </main>
