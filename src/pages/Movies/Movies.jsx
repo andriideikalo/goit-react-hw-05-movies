@@ -4,12 +4,14 @@ import { BsSearch } from 'react-icons/bs';
 import { getMovieByQuery } from 'services/Api';
 import { MovieList } from 'components/MovieList';
 import Notiflix from 'notiflix';
+import Loader from '../../components/Loader/Loader';
 
 import * as styl from './Movies.styled';
 
 const Movies = () => {
   const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const queryParam = searchParams.get('query');
@@ -18,13 +20,13 @@ const Movies = () => {
     if (!queryParam) {
       return;
     }
-
+    setIsLoading(true);
     getMovieByQuery(queryParam)
       .then(({ results }) => {
         setMovies(results);
       })
       .catch(error => console.log(error))
-      .finally();
+      .finally(() => setIsLoading(false));
   }, [queryParam]);
 
   const handleChange = e => {
@@ -36,7 +38,7 @@ const Movies = () => {
     e.preventDefault();
 
     const searchQuery = query.trim().toLowerCase();
-
+    setIsLoading(true);
     if (!searchQuery) {
       Notiflix.Notify.warning(
         'Search box cannot be empty. Please enter the word.'
@@ -69,6 +71,7 @@ const Movies = () => {
             </styl.Button>
           </styl.Form>
           {movies && <MovieList items={movies} />}
+          {isLoading && <Loader />}
         </styl.Container>
       </styl.Section>
     </main>
