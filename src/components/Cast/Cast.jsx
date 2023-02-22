@@ -11,26 +11,23 @@ const Cast = () => {
   useEffect(() => {
     getMovieCast(movieId)
       .then(({ cast }) => {
+        console.log(cast);
         setCast(cast);
       })
-      .catch(function (error) {
-        if (error.response) {
-          Notiflix.Notify.warning(error.response.data);
-          // console.log(error.response.data);
-        } else if (error.request) {
-          Notiflix.Notify.warning('Request failed');
-          // console.log(error.request);
-        } else {
-          Notiflix.Notify.warning('Error', error.message);
-          // console.log(error.message);
-        }
-      })
+      .catch(error => console.log(error))
       .finally();
   }, [movieId]);
 
+  if (!cast) {
+    // Notiflix.Notify.warning(
+    //   'Sorry. There is no list of actors for this film.('
+    // );
+    return;
+  }
+
   return (
     <>
-      {cast && (
+      {cast.length > 0 ? (
         <styl.List>
           {cast.map(({ id, character, name, profile_path }) => (
             <styl.Item key={id}>
@@ -43,11 +40,11 @@ const Cast = () => {
             </styl.Item>
           ))}
         </styl.List>
-      )}
-      {!cast &&
+      ) : (
         Notiflix.Notify.warning(
           'Sorry. There is no list of actors for this film.('
-        )}
+        )
+      )}
     </>
   );
 };

@@ -11,39 +11,32 @@ const Reviews = () => {
   useEffect(() => {
     getMovieReviews(movieId)
       .then(({ results }) => {
-        if (!results.length) {
-          return;
-        }
         setReviews(results);
       })
-      .catch(function (error) {
-        if (error.response) {
-          Notiflix.Notify.warning(error.response.data);
-        } else if (error.request) {
-          Notiflix.Notify.warning('Request failed');
-        } else {
-          Notiflix.Notify.warning('Error', error.message);
-        }
-      })
+      .catch(error => console.log(error))
       .finally();
   }, [movieId]);
 
+  if (!reviews) {
+    return;
+  }
+
   return (
     <>
-      {reviews && (
+      {reviews.length > 0 ? (
         <ul>
-          {reviews.map(({ id, author, content, url }) => (
+          {reviews.map(({ id, author, content }) => (
             <div key={id}>
-              <styl.Reviews cite={url}>
+              <styl.Reviews>
                 <styl.ContextAuthor>Author: {author}</styl.ContextAuthor>
                 <styl.Context> {content} </styl.Context>
               </styl.Reviews>
             </div>
           ))}
         </ul>
+      ) : (
+        Notiflix.Notify.warning('Sorry. There are no reviews for this movie.(')
       )}
-      {reviews !== setReviews &&
-        Notiflix.Notify.warning('Sorry. There are no reviews for this movie.(')}
     </>
   );
 };
