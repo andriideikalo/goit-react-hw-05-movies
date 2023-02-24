@@ -6,7 +6,7 @@ export const Container = styled.div`
   padding-right: 20px;
   margin-left: 0;
   margin-right: 0o;
-  /* width: 1280px; */
+  /* position: sticky; */
 `;
 
 export const Navigation = styled.nav`

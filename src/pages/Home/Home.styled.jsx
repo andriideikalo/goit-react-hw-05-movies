@@ -8,12 +8,12 @@ export const Section = styled.section`
 export const Container = styled.div`
   padding-left: 20px;
   padding-right: 20px;
-  width: 1280px;
-  color: #494545;
+  color: grey;
 `;
 
 export const Heading = styled.h1`
+  position: sticky;
   margin-bottom: 32px;
-
+  color: black;
   font-size: 56px;
 `;

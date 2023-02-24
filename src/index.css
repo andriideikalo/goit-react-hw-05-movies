@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
 }
 
 code {
@@ -25,8 +26,12 @@ body {
     Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
     sans-serif;
   color: #494545;
-  /* background-color: #212121; */
-  font-size: 20px;
+   font-size: 20px;
+   background-image: url(./image/26105.jpg) ;
+   background-size: repeat;
+   background-position: center;
+   background-size: contain;
+
 }
 
 img {

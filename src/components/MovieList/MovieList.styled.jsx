@@ -14,21 +14,20 @@ export const Item = styled(NavLink)`
 `;
 export const Name = styled.p`
   font-size: 16px;
+  font-weight: 500;
   margin-bottom: 8px;
+  color: black;
 `;
 
 export const Wraper = styled.ul`
   display: grid;
-  grid: repeat(7, 140px) / auto-flow 300px;
-  grid-gap: 100px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 30px;
 `;
 export const List = styled.li`
   margin-bottom: 0;
-  display: grid;
-  text-align: center;
+  /* text-align: center; */
 `;
 export const Img = styled.img`
-  width: 140px;
-  height: 140px;
-  display: grid;
+  width: 100%;
 `;
