@@ -32,7 +32,11 @@ const Cast = () => {
           {cast.map(({ id, character, name, profile_path }) => (
             <styl.Item key={id}>
               <styl.Img
-                src={`https://image.tmdb.org/t/p/w500${profile_path}`}
+                src={
+                  profile_path
+                    ? `https://image.tmdb.org/t/p/w500${profile_path}`
+                    : 'https://svgsilh.com/svg/1299805-9e9e9e.svg'
+                }
                 alt={name}
               />
               <styl.NameCast>{name}</styl.NameCast>

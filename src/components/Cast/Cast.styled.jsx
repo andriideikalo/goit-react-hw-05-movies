@@ -16,7 +16,7 @@ export const NameCast = styled.p`
 
 export const Img = styled.img`
   width: 140px;
-  height: 140px;
+  /* height: 160px; */
   margin-bottom: 16px;
   object-fit: cover;
   border-radius: 10px;
