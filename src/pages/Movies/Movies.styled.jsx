@@ -65,7 +65,7 @@ export const Input = styled.input`
   letter-spacing: 1.4px;
 
   color: orange;
-  background-color: transparent;
+  background-color: white;
 
   border: 1px solid #494545;
   border-radius: 10px;
