@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const Item = styled(NavLink)`
   display: block;
-  background-color: white;
+  /* background-color: white; */
   margin: 0 auto;
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
     color 250ms cubic-bezier(0.4, 0, 0.2, 1);
