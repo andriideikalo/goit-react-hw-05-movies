@@ -8,7 +8,7 @@ export const Section = styled.section`
 export const Container = styled.div`
   padding-left: 20px;
   padding-right: 20px;
-  width: 1280px;
+  width: 100%;
 `;
 
 export const Form = styled.form`
@@ -96,7 +96,7 @@ export const Button = styled.button`
   border: none;
 
   cursor: pointer;
-  /* transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1); */
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover,
   &:focus {

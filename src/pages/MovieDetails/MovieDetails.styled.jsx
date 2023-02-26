@@ -11,7 +11,7 @@ export const Container = styled.div`
   padding-right: 20px;
   /* margin-left: auto;
   margin-right: auto; */
-  width: 1280px;
+  width: 100%;
 `;
 
 export const MovieWrapper = styled.div`
