@@ -17,6 +17,7 @@ export const Name = styled.p`
   font-weight: 500;
   margin-bottom: 8px;
   color: black;
+  text-align: center;
 `;
 
 export const Wraper = styled.ul`
@@ -25,8 +26,9 @@ export const Wraper = styled.ul`
   grid-gap: 30px;
 `;
 export const List = styled.li`
-  margin-bottom: 0;
-  /* text-align: center; */
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 `;
 export const Img = styled.img`
   width: 100%;
